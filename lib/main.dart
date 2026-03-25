@@ -1,3 +1,6 @@
+import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/screens/profile_tab.dart';
+import 'package:evently_app/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,7 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(),
+      debugShowCheckedModeBanner: false,
+      theme: AppTheme.lightTheme,
+      routes: {
+        ProfileTab.routeName : (context) => ProfileTab(),
+      },
+      initialRoute: ProfileTab.routeName,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+      locale: Locale('ar'),
     );
   }
 }
