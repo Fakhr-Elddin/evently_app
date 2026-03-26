@@ -1,6 +1,6 @@
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
-import 'package:evently_app/widgets/selected_and_unselected_language_widget.dart';
+import 'package:evently_app/widgets/selected_and_unselected_setting_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,10 +20,10 @@ class LanguageBottomSheet extends StatelessWidget {
               languageProvider.changeAppLanguage('en');
             },
             child: languageProvider.appLanguage == 'en'
-                ? SelectedLanguageWidget(
+                ? SelectedSettingWidget(
               text: AppLocalizations.of(context)!.english,
             )
-                : UnSelectedLanguageWidget(
+                : UnSelectedSettingWidget(
               text: AppLocalizations.of(context)!.english,
             ),
           ),
@@ -35,10 +35,10 @@ class LanguageBottomSheet extends StatelessWidget {
               languageProvider.changeAppLanguage('ar');
             },
             child: languageProvider.appLanguage == 'ar'
-                ? SelectedLanguageWidget(
+                ? SelectedSettingWidget(
               text: AppLocalizations.of(context)!.arabic,
             )
-                : UnSelectedLanguageWidget(
+                : UnSelectedSettingWidget(
               text: AppLocalizations.of(context)!.arabic,
             ),
           ),

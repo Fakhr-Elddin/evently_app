@@ -1,9 +1,11 @@
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
+import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
-import 'package:evently_app/utils/assets_manager.dart';
 import 'package:evently_app/widgets/language_bottom_sheet.dart';
+import 'package:evently_app/widgets/settings_selection_field.dart';
+import 'package:evently_app/widgets/theme_bottom_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +21,7 @@ class _ProfileTabState extends State<ProfileTab> {
   @override
   Widget build(BuildContext context) {
     var languageProvider = Provider.of<AppLanguageProvider>(context);
+    var themeProvider = Provider.of<AppThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.primaryColorLight,
@@ -39,59 +42,24 @@ class _ProfileTabState extends State<ProfileTab> {
               onTap: (){
                 showLanguageBottomSheet();
               },
-              child: Container(
-                padding: EdgeInsets.all(16),
-                margin: EdgeInsets.symmetric(vertical: 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: BoxBorder.all(
-                    color: AppColors.primaryColorLight,
-                    width: 2,
-                  )
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      languageProvider.appLanguage == 'en'
-                          ? AppLocalizations.of(context)!.english
-                          : AppLocalizations.of(context)!.arabic,
-                      style: AppStyles.bold20PrimaryLight,
-                    ),
-                    ImageIcon(
-                      color: AppColors.primaryColorLight,
-                      AssetImage(AssetsManager.arrowDownIcon),
-                    ),
-                  ],
-                ),
+              child: SettingsSelectionField(
+                text: languageProvider.appLanguage == 'en'
+                    ? AppLocalizations.of(context)!.english
+                    : AppLocalizations.of(context)!.arabic,
               ),
             ),
             Text(
-              'Theme',
+              AppLocalizations.of(context)!.theme,
               style: AppStyles.bold20Black,
             ),
-            Container(
-              padding: EdgeInsets.all(16),
-              margin: EdgeInsets.symmetric(vertical: 16),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  border: BoxBorder.all(
-                    color: AppColors.primaryColorLight,
-                    width: 2,
-                  )
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Light',
-                    style: AppStyles.bold20PrimaryLight,
-                  ),
-                  ImageIcon(
-                    color: AppColors.primaryColorLight,
-                    AssetImage(AssetsManager.arrowDownIcon),
-                  ),
-                ],
+            InkWell(
+              onTap: (){
+                showThemeBottomSheet();
+              },
+              child: SettingsSelectionField(
+                text: themeProvider.appTheme == ThemeMode.light
+                    ? AppLocalizations.of(context)!.light
+                    : AppLocalizations.of(context)!.dark,
               ),
             ),
           ],
@@ -107,4 +75,13 @@ class _ProfileTabState extends State<ProfileTab> {
       builder: (context) => LanguageBottomSheet(),
     );
   }
+
+  void showThemeBottomSheet() {
+    showModalBottomSheet(
+      backgroundColor: AppColors.backgroundColorLight,
+      context: context,
+      builder: (context) => ThemeBottomSheet(),
+    );
+  }
 }
+

@@ -2,8 +2,8 @@ import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class SelectedLanguageWidget extends StatelessWidget {
-  const SelectedLanguageWidget({super.key, required this.text});
+class SelectedSettingWidget extends StatelessWidget {
+  const SelectedSettingWidget({super.key, required this.text});
   final String text;
 
   @override
@@ -25,8 +25,8 @@ class SelectedLanguageWidget extends StatelessWidget {
   }
 }
 
-class UnSelectedLanguageWidget extends StatelessWidget {
-  const UnSelectedLanguageWidget({super.key, required this.text});
+class UnSelectedSettingWidget extends StatelessWidget {
+  const UnSelectedSettingWidget({super.key, required this.text});
   final String text;
 
   @override
