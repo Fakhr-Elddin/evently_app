@@ -18,11 +18,21 @@ class AppLocalizationsAr extends AppLocalizations {
   String get english => 'الإنجليزية';
 
   @override
-  String get theme => 'النمط';
+  String get theme => 'السمة';
 
   @override
   String get light => 'نهارى';
 
   @override
   String get dark => 'ليلى';
+
+  @override
+  String get onboarding1_title => 'خصص تجربتك';
+
+  @override
+  String get onboarding1_subtitle =>
+      'اختر المظهر واللغة المفضلين لديك للبدء بتجربة مريحة ومناسبة لأسلوبك.';
+
+  @override
+  String get lets_start => 'لنبدأ';
 }

@@ -25,4 +25,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get dark => 'Dark';
+
+  @override
+  String get onboarding1_title => 'Personalize Your Experience';
+
+  @override
+  String get onboarding1_subtitle =>
+      'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.';
+
+  @override
+  String get lets_start => 'Let’s Start';
 }

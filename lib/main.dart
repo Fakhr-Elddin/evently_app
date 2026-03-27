@@ -1,6 +1,7 @@
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/screens/onboarding_screen.dart';
 import 'package:evently_app/screens/profile_tab.dart';
 import 'package:evently_app/utils/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +31,10 @@ class MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       themeMode: themeProvider.appTheme,
       routes: {
+        OnboardingScreen.routeName : (context) => OnboardingScreen(),
         ProfileTab.routeName : (context) => ProfileTab(),
       },
-      initialRoute: ProfileTab.routeName,
+      initialRoute: OnboardingScreen.routeName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(languageProvider.appLanguage),

@@ -133,6 +133,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Dark'**
   String get dark;
+
+  /// No description provided for @onboarding1_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalize Your Experience'**
+  String get onboarding1_title;
+
+  /// No description provided for @onboarding1_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.'**
+  String get onboarding1_subtitle;
+
+  /// No description provided for @lets_start.
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s Start'**
+  String get lets_start;
 }
 
 class _AppLocalizationsDelegate

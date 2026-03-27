@@ -4,5 +4,8 @@
 "english" : "English",
 "theme" : "Theme",
 "light" : "Light",
-"dark" : "Dark"
+"dark" : "Dark",
+"onboarding1_title" : "Personalize Your Experience",
+"onboarding1_subtitle" : "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
+ "lets_start" : "Let’s Start"
 }
