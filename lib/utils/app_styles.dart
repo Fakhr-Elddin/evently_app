@@ -35,7 +35,7 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.blackColor,
   );
-  static final medium16Black = GoogleFonts.inter(
+  static final medium16 = GoogleFonts.inter(
     fontSize: 16,
     fontWeight: FontWeight.w500,
     color: AppColors.blackColor,

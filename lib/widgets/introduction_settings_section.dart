@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
-class SettingsSection extends StatelessWidget {
-  const SettingsSection({super.key});
+class IntroductionSettingsSection extends StatelessWidget {
+  const IntroductionSettingsSection({super.key});
 
   @override
   Widget build(BuildContext context) {

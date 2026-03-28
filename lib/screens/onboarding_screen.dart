@@ -1,20 +1,24 @@
-import 'package:evently_app/l10n/app_localizations.dart';
-import 'package:evently_app/providers/app_theme_provider.dart';
-import 'package:evently_app/utils/app_colors.dart';
-import 'package:evently_app/utils/app_styles.dart';
+import 'package:evently_app/models/onboarding_model.dart';
 import 'package:evently_app/utils/assets_manager.dart';
-import 'package:evently_app/widgets/custom_elevated_button.dart';
-import 'package:evently_app/widgets/settings_section.dart';
+import 'package:evently_app/widgets/boarding_item.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-class OnboardingScreen extends StatelessWidget {
+class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
-  static const String routeName = 'onboardingScreen';
+
+  static const String routeName = "onboardingScreen";
+
+  @override
+  State<OnboardingScreen> createState() => _OnboardingScreenState();
+}
+
+class _OnboardingScreenState extends State<OnboardingScreen> {
+  PageController boardingController = PageController();
+  bool isFirst = true;
+  bool isLast = false;
 
   @override
   Widget build(BuildContext context) {
-    var themeProvider = Provider.of<AppThemeProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -22,40 +26,33 @@ class OnboardingScreen extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 28.0),
-              child: Image.asset(
-                fit: BoxFit.fill,
-                AssetsManager.onboarding1,
-              ),
-            ),
-            Text(
-              AppLocalizations.of(context)!.onboarding1_title,
-              style: AppStyles.bold20PrimaryLight,
-            ),
-            Text(
-              AppLocalizations.of(context)!.onboarding1_subtitle,
-              style: themeProvider.appTheme == ThemeMode.light
-                ? AppStyles.medium16Black
-                : AppStyles.medium16Black.copyWith(color: AppColors.offWhiteColor,),
-            ),
-            SettingsSection(),
-            CustomElevatedButton(
-              onPressed: (){},
-            ),
-            SizedBox(
-              height: 28,
-            ),
-          ],
+        child: PageView.builder(
+          controller: boardingController,
+          itemCount: OnboardingModel.getOnboardingList(context).length,
+          onPageChanged: (index) {
+            if (index == 0) {
+              isFirst = true;
+            } else {
+              isFirst = false;
+            }
+            if (index ==
+                OnboardingModel.getOnboardingList(context).length - 1) {
+              isLast = true;
+            } else {
+              isLast = false;
+            }
+            setState(() {});
+          },
+          itemBuilder: (context, index) => BoardingItem(
+            onboardingModel: OnboardingModel.getOnboardingList(context)[index],
+            isFirst: isFirst,
+            isLast: isLast,
+            boardingController: boardingController,
+          ),
         ),
       ),
     );
   }
 }
-
 
 
