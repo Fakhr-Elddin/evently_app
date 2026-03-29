@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     primaryColor: AppColors.primaryColorLight,
+    focusColor: AppColors.greyColor,
     scaffoldBackgroundColor: AppColors.backgroundColorLight,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.transparentColor,
@@ -20,6 +21,7 @@ class AppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     primaryColor: AppColors.primaryColorLight,
+    focusColor: AppColors.primaryColorLight,
     scaffoldBackgroundColor: AppColors.backgroundColorDark,
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.backgroundColorDark,
