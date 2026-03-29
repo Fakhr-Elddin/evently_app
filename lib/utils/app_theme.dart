@@ -1,4 +1,5 @@
 import 'package:evently_app/utils/app_colors.dart';
+import 'package:evently_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -11,8 +12,21 @@ class AppTheme {
       backgroundColor: AppColors.transparentColor,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.primaryColorLight,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(75),
+        side: BorderSide(
+          color: AppColors.backgroundColorLight,
+          width: 4,
+        ),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.primaryColorLight,
+      selectedLabelStyle: AppStyles.bold12Light,
+      unselectedLabelStyle: AppStyles.bold12Light,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       selectedItemColor: AppColors.backgroundColorLight,
@@ -27,8 +41,21 @@ class AppTheme {
       backgroundColor: AppColors.backgroundColorDark,
       systemOverlayStyle: SystemUiOverlayStyle.light,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.backgroundColorDark,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadiusGeometry.circular(75),
+        side: BorderSide(
+          color: AppColors.offWhiteColor,
+          width: 4,
+        ),
+      ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
+      backgroundColor: AppColors.backgroundColorDark,
+      selectedLabelStyle: AppStyles.bold12dark,
+      unselectedLabelStyle: AppStyles.bold12dark,
       showSelectedLabels: true,
       showUnselectedLabels: true,
       selectedItemColor: AppColors.offWhiteColor,

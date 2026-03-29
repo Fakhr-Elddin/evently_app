@@ -1,7 +1,7 @@
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
-import 'package:evently_app/screens/home_screen.dart';
+import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/introduction_screen.dart';
 import 'package:evently_app/screens/login_screen.dart';
 import 'package:evently_app/screens/onboarding_screen.dart';

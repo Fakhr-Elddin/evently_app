@@ -75,4 +75,14 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.backgroundColorLight,
   );
+  static final bold12Light = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AppColors.backgroundColorLight,
+  );
+  static final bold12dark = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AppColors.offWhiteColor,
+  );
 }

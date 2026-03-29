@@ -10,4 +10,12 @@ class AssetsManager {
   static const String passwordIcon = "assets/images/ic_password.png";
   static const String googleIcon = "assets/images/ic_google.png";
   static const String nameIcon = "assets/images/ic_name.png";
+  static const String homeIcon = "assets/images/ic_home.png";
+  static const String homeActiveIcon = "assets/images/ic_home_active.png";
+  static const String mapIcon = "assets/images/ic_map.png";
+  static const String mapActiveIcon = "assets/images/ic_map_active.png";
+  static const String loveIcon = "assets/images/ic_love.png";
+  static const String loveActiveIcon = "assets/images/ic_love_active.png";
+  static const String profileIcon = "assets/images/ic_profile.png";
+  static const String profileActiveIcon = "assets/images/ic_profile_active.png";
 }
