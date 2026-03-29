@@ -40,6 +40,10 @@ dependencies:
   flutter_native_splash: ^2.4.7
   google_fonts: ^8.0.2
   provider: ^6.1.5+1
+  toggle_switch: ^2.3.0
+  font_awesome_flutter: ^11.0.0
+  country_flags: ^4.1.2
+  smooth_page_indicator: ^2.0.1
 
 dev_dependencies:
   flutter_test:
