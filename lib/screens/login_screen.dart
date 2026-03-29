@@ -1,4 +1,6 @@
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/screens/home_screen.dart';
+import 'package:evently_app/screens/register_screen.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/assets_manager.dart';
@@ -70,7 +72,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               PrimaryTextButton(
                 text: 'Login',
-                onPressed: (){},
+                onPressed: (){
+                  Navigator.pushNamed(context, HomeScreen.routeName);
+                },
               ),
               SizedBox(
                 height: 24,
@@ -84,7 +88,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   SecondaryTextButton(
                     text: 'Create Account',
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamed(context, RegisterScreen.routeName);
+                    },
                   ),
                 ],
               ),

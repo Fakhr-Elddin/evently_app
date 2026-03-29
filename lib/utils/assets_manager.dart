@@ -9,4 +9,5 @@ class AssetsManager {
   static const String emailIcon = "assets/images/ic_email.png";
   static const String passwordIcon = "assets/images/ic_password.png";
   static const String googleIcon = "assets/images/ic_google.png";
+  static const String nameIcon = "assets/images/ic_name.png";
 }
