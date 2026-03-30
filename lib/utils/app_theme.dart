@@ -32,6 +32,9 @@ class AppTheme {
       selectedItemColor: AppColors.backgroundColorLight,
       unselectedItemColor: AppColors.backgroundColorLight,
     ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.backgroundColorLight,
+    ),
   );
   static ThemeData darkTheme = ThemeData(
     primaryColor: AppColors.primaryColorLight,
@@ -60,6 +63,9 @@ class AppTheme {
       showUnselectedLabels: true,
       selectedItemColor: AppColors.offWhiteColor,
       unselectedItemColor: AppColors.offWhiteColor,
+    ),
+    bottomSheetTheme: BottomSheetThemeData(
+      backgroundColor: AppColors.backgroundColorDark,
     ),
   );
 }

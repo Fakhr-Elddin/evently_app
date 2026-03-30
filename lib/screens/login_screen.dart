@@ -73,7 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               PrimaryTextButton(
                 text: 'Login',
                 onPressed: (){
-                  Navigator.pushNamed(context, HomeScreen.routeName);
+                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
                 },
               ),
               SizedBox(
