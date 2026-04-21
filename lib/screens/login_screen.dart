@@ -1,5 +1,5 @@
 import 'package:evently_app/providers/app_theme_provider.dart';
-import 'package:evently_app/screens/home_screen.dart';
+import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/register_screen.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
@@ -39,7 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomTextFromField(
                 controller: emailController,
                 hintText: 'Email',
-                prefixIcon: AssetsManager.emailIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.emailIcon),
+                ),
               ),
               SizedBox(
                 height: 16,
@@ -48,7 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 obscureText: true,
                 hintText: 'Password',
-                prefixIcon: AssetsManager.passwordIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.passwordIcon),
+                ),
                 suffixIcon: IconButton(onPressed: (){}, icon: Icon(
                   Icons.visibility_off,
                   color: themeProvider.appTheme == ThemeMode.light
@@ -73,7 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
               PrimaryTextButton(
                 text: 'Login',
                 onPressed: (){
-                  Navigator.pushNamed(context, HomeScreen.routeName);
+                  Navigator.pushReplacementNamed(context, HomeScreen.routeName);
                 },
               ),
               SizedBox(

@@ -1,6 +1,8 @@
+import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SelectedSettingWidget extends StatelessWidget {
   const SelectedSettingWidget({super.key, required this.text});
@@ -31,9 +33,14 @@ class UnSelectedSettingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<AppThemeProvider>(context);
     return Text(
       text,
-      style: AppStyles.bold20Black,
+      style: themeProvider.appTheme == ThemeMode.light
+          ? AppStyles.bold20
+          : AppStyles.bold20.copyWith(
+        color: AppColors.offWhiteColor,
+      ),
     );
   }
 }

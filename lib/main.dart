@@ -1,17 +1,25 @@
+import 'package:evently_app/firebase_options.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
-import 'package:evently_app/screens/home_screen.dart';
+import 'package:evently_app/screens/home/create_event_screen.dart';
+import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/introduction_screen.dart';
 import 'package:evently_app/screens/login_screen.dart';
 import 'package:evently_app/screens/onboarding_screen.dart';
-import 'package:evently_app/screens/profile_tab.dart';
 import 'package:evently_app/screens/register_screen.dart';
 import 'package:evently_app/utils/app_theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  // use this line to save data local
+  // await FirebaseFirestore.instance.disableNetwork();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AppLanguageProvider(),),
@@ -40,7 +48,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.routeName : (context) => LoginScreen(),
         RegisterScreen.routeName : (context) => RegisterScreen(),
         HomeScreen.routeName : (context) => HomeScreen(),
-        ProfileTab.routeName : (context) => ProfileTab(),
+        CreateEventScreen.routeName : (context) => CreateEventScreen(),
       },
       initialRoute: IntroductionScreen.routeName,
       localizationsDelegates: AppLocalizations.localizationsDelegates,

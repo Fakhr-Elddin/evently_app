@@ -8,22 +8,25 @@ class CustomTextFromField extends StatelessWidget {
   const CustomTextFromField({
     super.key,
     required this.hintText,
-    required this.prefixIcon,
+    this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
     required this.controller,
+    this.maxLines = 1,
   });
 
   final String hintText;
-  final String prefixIcon;
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final bool? obscureText;
   final TextEditingController controller;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return TextFormField(
+      maxLines: maxLines,
       controller: controller,
       obscureText: obscureText!,
       obscuringCharacter: "*",
@@ -39,12 +42,7 @@ class CustomTextFromField extends StatelessWidget {
               ? AppColors.greyColor
               : AppColors.offWhiteColor,
         ),
-        prefixIcon: ImageIcon(
-          color: themeProvider.appTheme == ThemeMode.light
-              ? AppColors.greyColor
-              : AppColors.offWhiteColor,
-          AssetImage(prefixIcon),
-        ),
+        prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),

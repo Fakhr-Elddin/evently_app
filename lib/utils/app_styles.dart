@@ -30,7 +30,7 @@ class AppStyles {
     fontStyle: FontStyle.italic,
     color: AppColors.primaryColorLight,
   );
-  static final bold20Black = GoogleFonts.inter(
+  static final bold20 = GoogleFonts.inter(
     fontSize: 20,
     fontWeight: FontWeight.bold,
     color: AppColors.blackColor,
@@ -40,12 +40,12 @@ class AppStyles {
     fontWeight: FontWeight.w500,
     color: AppColors.blackColor,
   );
-  static final bold14Black = GoogleFonts.inter(
+  static final bold14 = GoogleFonts.inter(
     fontSize: 14,
     fontWeight: FontWeight.bold,
     color: AppColors.blackColor,
   );
-  static final medium14Black = GoogleFonts.inter(
+  static final medium14 = GoogleFonts.inter(
     fontSize: 14,
     fontWeight: FontWeight.w500,
     color: AppColors.blackColor,
@@ -70,9 +70,24 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     color: AppColors.whiteColor,
   );
-  static final bold24Background = GoogleFonts.inter(
-    fontSize: 20,
+  static final bold24 = GoogleFonts.inter(
+    fontSize: 24,
     fontWeight: FontWeight.bold,
+    color: AppColors.backgroundColorLight,
+  );
+  static final bold12Light = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AppColors.backgroundColorLight,
+  );
+  static final bold12dark = GoogleFonts.inter(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AppColors.offWhiteColor,
+  );
+  static final regular14 = GoogleFonts.inter(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
     color: AppColors.backgroundColorLight,
   );
 }
