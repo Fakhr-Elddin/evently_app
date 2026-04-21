@@ -1,3 +1,4 @@
+import 'package:evently_app/screens/home/create_event_screen.dart';
 import 'package:evently_app/screens/home/tabs/home_tab.dart';
 import 'package:evently_app/screens/home/tabs/love_tab.dart';
 import 'package:evently_app/screens/home/tabs/map_tab.dart';
@@ -35,7 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
             width: 4,
           ),
         ),
-        onPressed: (){},
+        onPressed: (){
+          Navigator.pushNamed(context, CreateEventScreen.routeName,);
+        },
         child: Icon(
           Icons.add,
           color: AppColors.whiteColor,
@@ -46,9 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: (index){
           if(index != selectedIndex){
             selectedIndex = index;
-            setState(() {
-              print('hello world $index');
-            });
+            setState(() {});
           }
         },
         items: [

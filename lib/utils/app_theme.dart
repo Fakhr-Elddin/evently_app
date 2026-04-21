@@ -8,6 +8,12 @@ class AppTheme {
     primaryColor: AppColors.primaryColorLight,
     focusColor: AppColors.greyColor,
     scaffoldBackgroundColor: AppColors.backgroundColorLight,
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 22,
+        color: AppColors.primaryColorLight,
+      ),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.transparentColor,
       systemOverlayStyle: SystemUiOverlayStyle.dark,
@@ -40,6 +46,12 @@ class AppTheme {
     primaryColor: AppColors.primaryColorLight,
     focusColor: AppColors.primaryColorLight,
     scaffoldBackgroundColor: AppColors.backgroundColorDark,
+    textTheme: TextTheme(
+      titleLarge: TextStyle(
+        fontSize: 22,
+        color: AppColors.primaryColorLight,
+      ),
+    ),
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.backgroundColorDark,
       systemOverlayStyle: SystemUiOverlayStyle.light,

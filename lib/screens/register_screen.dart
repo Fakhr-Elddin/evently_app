@@ -32,9 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         centerTitle: true,
         title: Text(
           'Register',
-          style: Theme.of(context).textTheme.titleLarge!.copyWith(
-            color: AppColors.primaryColorLight,
-          ),
+          style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
       body: SafeArea(
@@ -49,7 +47,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               CustomTextFromField(
                 controller: nameController,
                 hintText: 'Name',
-                prefixIcon: AssetsManager.nameIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.nameIcon),
+                ),
               ),
               SizedBox(
                 height: 16,
@@ -57,7 +60,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
               CustomTextFromField(
                 controller: emailController,
                 hintText: 'Email',
-                prefixIcon: AssetsManager.emailIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.emailIcon),
+                ),
               ),
               SizedBox(
                 height: 16,
@@ -66,7 +74,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: passwordController,
                 obscureText: true,
                 hintText: 'Password',
-                prefixIcon: AssetsManager.passwordIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.passwordIcon),
+                ),
                 suffixIcon: IconButton(onPressed: (){}, icon: Icon(
                   Icons.visibility_off,
                   color: themeProvider.appTheme == ThemeMode.light
@@ -82,7 +95,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 controller: resetPasswordController,
                 obscureText: true,
                 hintText: 'Re Password',
-                prefixIcon: AssetsManager.passwordIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.passwordIcon),
+                ),
                 suffixIcon: IconButton(onPressed: (){}, icon: Icon(
                   Icons.visibility_off,
                   color: themeProvider.appTheme == ThemeMode.light

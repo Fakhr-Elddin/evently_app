@@ -39,7 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomTextFromField(
                 controller: emailController,
                 hintText: 'Email',
-                prefixIcon: AssetsManager.emailIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.emailIcon),
+                ),
               ),
               SizedBox(
                 height: 16,
@@ -48,7 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 obscureText: true,
                 hintText: 'Password',
-                prefixIcon: AssetsManager.passwordIcon,
+                prefixIcon: ImageIcon(
+                  color: themeProvider.appTheme == ThemeMode.light
+                      ? AppColors.greyColor
+                      : AppColors.offWhiteColor,
+                  AssetImage(AssetsManager.passwordIcon),
+                ),
                 suffixIcon: IconButton(onPressed: (){}, icon: Icon(
                   Icons.visibility_off,
                   color: themeProvider.appTheme == ThemeMode.light

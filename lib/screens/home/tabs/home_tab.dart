@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently_app/firebase/firebase_manager.dart';
+import 'package:evently_app/models/task_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
@@ -5,6 +8,7 @@ import 'package:evently_app/utils/assets_manager.dart';
 import 'package:evently_app/widgets/event_item.dart';
 import 'package:evently_app/widgets/tab_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
 class HomeTab extends StatefulWidget {
@@ -161,17 +165,44 @@ class _HomeTabState extends State<HomeTab> {
             ],
           ),
         ),
-        Expanded(
-          child: ListView.separated(
-            padding: EdgeInsets.only(
-              top: 16,
-              left: 16,
-              right: 16,
-            ),
-            itemBuilder: (context, index) => EventItem(),
-            separatorBuilder: (context, index) => SizedBox(height: 16,),
-            itemCount: 20,
-          ),
+        StreamBuilder<QuerySnapshot<TaskModel>>(
+          stream: FirebaseManager.getEvents(),
+          builder: (context, snapshot) {
+            return Expanded(
+              child: ListView.separated(
+                padding: EdgeInsets.only(
+                  top: 16,
+                  left: 16,
+                  right: 16,
+                ),
+                itemBuilder: (context, index) => Slidable(
+                  key: UniqueKey(),
+                  startActionPane: ActionPane(
+                    motion: const ScrollMotion(),
+                    dismissible: DismissiblePane(onDismissed: () {
+                      FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
+                    }),
+                    children:  [
+                      SlidableAction(
+                        onPressed: (context){
+                          FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
+                        },
+                        backgroundColor: Color(0xFFFE4A49),
+                        foregroundColor: Colors.white,
+                        icon: Icons.delete,
+                        label: 'Delete',
+                      ),
+                    ],
+                  ),
+                  child: EventItem(
+                    taskModel: snapshot.data?.docs[index].data(),
+                  ),
+                ),
+                separatorBuilder: (context, index) => SizedBox(height: 16,),
+                itemCount: snapshot.data?.docs.length ?? 0,
+              ),
+            );
+          }
         ),
       ],
     );

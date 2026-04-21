@@ -18,13 +18,14 @@ class AssetsManager {
   static const String loveActiveIcon = "assets/images/ic_love_active.png";
   static const String profileIcon = "assets/images/ic_profile.png";
   static const String profileActiveIcon = "assets/images/ic_profile_active.png";
-  static const String sports = "assets/images/sport.png";
+  static const String sport = "assets/images/sport.png";
   static const String birthday = "assets/images/birthday.png";
   static const String meeting = "assets/images/meeting.png";
   static const String gaming = "assets/images/gaming.png";
-  static const String workShop = "assets/images/work_shop.png";
-  static const String bookClub = "assets/images/book_club.png";
+  static const String workShop = "assets/images/workshop.png";
+  static const String bookClub = "assets/images/bookclub.png";
   static const String exhibition = "assets/images/exhibition.png";
   static const String holiday = "assets/images/holiday.png";
   static const String eating = "assets/images/eating.png";
+  static const String titleIcon = "assets/images/ic_title.png";
 }
