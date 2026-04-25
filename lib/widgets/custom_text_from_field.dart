@@ -13,6 +13,8 @@ class CustomTextFromField extends StatelessWidget {
     this.obscureText = false,
     required this.controller,
     this.maxLines = 1,
+    this.keyboardType,
+    this.validator,
   });
 
   final String hintText;
@@ -21,15 +23,19 @@ class CustomTextFromField extends StatelessWidget {
   final bool? obscureText;
   final TextEditingController controller;
   final int? maxLines;
+  final TextInputType? keyboardType;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
     return TextFormField(
+      keyboardType: keyboardType,
       maxLines: maxLines,
       controller: controller,
       obscureText: obscureText!,
       obscuringCharacter: "*",
+      validator: validator,
       style: TextStyle(
         color: themeProvider.appTheme == ThemeMode.light
             ? AppColors.greyColor
