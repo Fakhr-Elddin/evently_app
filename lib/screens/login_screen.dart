@@ -1,5 +1,6 @@
 import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/register_screen.dart';
 import 'package:evently_app/utils/app_colors.dart';
@@ -29,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
+    var authProvider = Provider.of<UserProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -105,8 +107,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       FirebaseManager.loginUser(
                         email: emailController.text,
                         password: passwordController.text,
-                        onSuccess: (){
+                        onSuccess: ()async{
                           Navigator.pop(context);
+                          await authProvider.initUser();
                           Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName,(route) => false,);
                         },
                         onError: (errorMessage){

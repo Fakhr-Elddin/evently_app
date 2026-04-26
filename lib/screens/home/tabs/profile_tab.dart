@@ -1,9 +1,12 @@
+import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/providers/app_language_provider.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/screens/login_screen.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/widgets/language_bottom_sheet.dart';
+import 'package:evently_app/widgets/primary_text_button.dart';
 import 'package:evently_app/widgets/settings_selection_field.dart';
 import 'package:evently_app/widgets/theme_bottom_sheet.dart';
 import 'package:flutter/material.dart';
@@ -68,6 +71,45 @@ class _ProfileTabState extends State<ProfileTab> {
                 text: themeProvider.appTheme == ThemeMode.light
                     ? AppLocalizations.of(context)!.light
                     : AppLocalizations.of(context)!.dark,
+              ),
+            ),
+            SizedBox(
+              height: 24,
+            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: (){
+                  FirebaseManager.logoutUser().then((value) {
+                    Navigator.pushNamedAndRemoveUntil(context, LoginScreen.routeName, (route) => false,);
+                  },);
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.redColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  alignment: AlignmentDirectional.centerStart
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.logout,
+                        color: AppColors.offWhiteColor,
+                        size: 24,
+                      ),
+                      SizedBox(
+                        width: 8,
+                      ),
+                      Text(
+                        'Logout',
+                        style: AppStyles.medium20White,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],
