@@ -9,8 +9,11 @@ import 'package:evently_app/screens/introduction_screen.dart';
 import 'package:evently_app/screens/login_screen.dart';
 import 'package:evently_app/screens/onboarding_screen.dart';
 import 'package:evently_app/screens/register_screen.dart';
+import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +24,27 @@ void main() async{
   );
   // use this line to save data local
   // await FirebaseFirestore.instance.disableNetwork();
+  FlutterError.onError = (errorDetails) {
+  // Non-async exceptions
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+
+  };
+  // Async exceptions
+  PlatformDispatcher.instance.onError = (error, stack) {
+      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+
+    return true;
+  };
+  ErrorWidget.builder = (FlutterErrorDetails details) {
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "حصلت مشكلة بسيطة، بنحلها وهنرجعلك !",
+          style: AppStyles.medium16,
+        ),
+      ),
+    );
+  };
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => AppLanguageProvider(),),
