@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/models/task_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/assets_manager.dart';
@@ -47,6 +48,7 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
+    var authProvider = Provider.of<UserProvider>(context);
     return Column(
       children: [
         Container(
@@ -65,6 +67,7 @@ class _HomeTabState extends State<HomeTab> {
                 child: Row(
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
                           'Welcome Back ✨',
@@ -75,7 +78,7 @@ class _HomeTabState extends State<HomeTab> {
                                 ),
                         ),
                         Text(
-                          'John Safwat',
+                          '${authProvider.userModel?.name}',
                           style: themeProvider.appTheme == ThemeMode.light
                               ? AppStyles.bold24
                               : AppStyles.bold24.copyWith(
@@ -166,42 +169,61 @@ class _HomeTabState extends State<HomeTab> {
           ),
         ),
         StreamBuilder<QuerySnapshot<TaskModel>>(
-          stream: FirebaseManager.getEvents(),
+          stream: FirebaseManager.getEvents(categoryName: eventsName[selectedIndex]),
           builder: (context, snapshot) {
-            return Expanded(
-              child: ListView.separated(
-                padding: EdgeInsets.only(
-                  top: 16,
-                  left: 16,
-                  right: 16,
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.primaryColorLight,
+                  ),
                 ),
-                itemBuilder: (context, index) => Slidable(
-                  key: UniqueKey(),
-                  startActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    dismissible: DismissiblePane(onDismissed: () {
-                      FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
-                    }),
-                    children:  [
-                      SlidableAction(
-                        onPressed: (context){
-                          FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
-                        },
-                        backgroundColor: Color(0xFFFE4A49),
-                        foregroundColor: Colors.white,
-                        icon: Icons.delete,
-                        label: 'Delete',
+              );
+            }
+            if(snapshot.hasError){
+              return Expanded(
+                  child: Center(
+                      child: Text(
+                        'Something Went Wrong, Try Again Later',
+                        style: AppStyles.medium16,
                       ),
-                    ],
                   ),
-                  child: EventItem(
-                    taskModel: snapshot.data?.docs[index].data(),
+              );
+            }
+            return Expanded(
+                child: ListView.separated(
+                  padding: EdgeInsets.only(
+                    top: 16,
+                    left: 16,
+                    right: 16,
                   ),
+                  itemBuilder: (context, index) => Slidable(
+                    key: UniqueKey(),
+                    startActionPane: ActionPane(
+                      motion: const ScrollMotion(),
+                      dismissible: DismissiblePane(onDismissed: () {
+                        FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
+                      }),
+                      children:  [
+                        SlidableAction(
+                          onPressed: (context){
+                            FirebaseManager.deleteTask(snapshot.data!.docs[index].id);
+                          },
+                          backgroundColor: Color(0xFFFE4A49),
+                          foregroundColor: Colors.white,
+                          icon: Icons.delete,
+                          label: 'Delete',
+                        ),
+                      ],
+                    ),
+                    child: EventItem(
+                      taskModel: snapshot.data?.docs[index].data(),
+                    ),
+                  ),
+                  separatorBuilder: (context, index) => SizedBox(height: 16,),
+                  itemCount: snapshot.data?.docs.length ?? 0,
                 ),
-                separatorBuilder: (context, index) => SizedBox(height: 16,),
-                itemCount: snapshot.data?.docs.length ?? 0,
-              ),
-            );
+              );
           }
         ),
       ],

@@ -8,6 +8,7 @@ import 'package:evently_app/utils/assets_manager.dart';
 import 'package:evently_app/widgets/category_event_item_selected_and_unselected.dart';
 import 'package:evently_app/widgets/custom_text_from_field.dart';
 import 'package:evently_app/widgets/primary_text_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -189,6 +190,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                           title: titleController.text,
                           description: descriptionController.text,
                           category: createEventProvider.eventsName[createEventProvider.selectedIndex],
+                          userId: FirebaseAuth.instance.currentUser!.uid,
                           date: createEventProvider.selectedDate!.millisecondsSinceEpoch,
                         );
                         createEventProvider.setLoading(true);
@@ -202,6 +204,7 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
                           title: titleController.text,
                           description: descriptionController.text,
                           category: createEventProvider.eventsName[createEventProvider.selectedIndex],
+                          userId: taskModel!.userId,
                           date: createEventProvider.selectedDate?.millisecondsSinceEpoch ?? taskModel!.date,
                           id: taskModel!.id,
                         );
