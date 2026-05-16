@@ -8,7 +8,7 @@ import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/introduction_screen.dart';
 import 'package:evently_app/screens/login_screen.dart';
 import 'package:evently_app/screens/onboarding_screen.dart';
-import 'package:evently_app/screens/register_screen.dart';
+import 'package:evently_app/screens/home/register/register_screen.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
