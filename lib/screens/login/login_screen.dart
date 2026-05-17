@@ -1,4 +1,4 @@
-import 'package:evently_app/firebase/firebase_manager.dart';
+import 'package:evently_app/base.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/screens/home/home_screen.dart';
@@ -22,10 +22,8 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> implements LoginValidator{
+class _LoginScreenState extends BaseView<LoginScreen, LoginScreenViewModel> implements LoginValidator{
 
-
-  LoginScreenViewModel viewModel = LoginScreenViewModel();
 
   @override
   void initState() {
@@ -212,39 +210,12 @@ class _LoginScreenState extends State<LoginScreen> implements LoginValidator{
   }
 
   @override
-  void onError(String errorMessage) {
-    Navigator.pop(context);
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(
-          "Something Went Wrong",
-        ),
-        content: Text(
-          errorMessage,
-        ),
-        actions: [
-          PrimaryTextButton(
-            text: "OK",
-            onPressed: (){
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
+  LoginScreenViewModel initMyViewModel() {
+    return LoginScreenViewModel();
   }
 
   @override
-  void onLoading() {
-    showDialog(
-      context: context,
-      builder: (context) => Center(child: CircularProgressIndicator(color: AppColors.primaryColorLight,),),);
-
-  }
-
-  @override
-  void onSuccess(){
+  void onSuccess() {
     Navigator.pop(context);
     Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName,(route) => false,);
   }
