@@ -1,5 +1,5 @@
-import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
+import 'package:evently_app/providers/user_provider.dart';
 import 'package:evently_app/screens/home/home_screen.dart';
 import 'package:evently_app/screens/register/register_navigator.dart';
 import 'package:evently_app/screens/register/register_screen_view_model.dart';
@@ -39,6 +39,7 @@ class _RegisterScreenState extends State<RegisterScreen> implements RegisterNavi
   @override
   Widget build(BuildContext context) {
     var themeProvider = Provider.of<AppThemeProvider>(context);
+    var authProvider = Provider.of<UserProvider>(context);
     return ChangeNotifierProvider(
       create: (context) => viewModel,
       child: Scaffold(
@@ -176,7 +177,12 @@ class _RegisterScreenState extends State<RegisterScreen> implements RegisterNavi
                       text: 'Create Account',
                       onPressed: (){
                         if(formKey.currentState?.validate() ?? false){
-                          register(context);
+                          viewModel.register(
+                            name: nameController.text,
+                            email: emailController.text,
+                            password: passwordController.text,
+                            userProvider: authProvider,
+                          );
                         }else{
                           setState(() {
                             autoValidateMode = AutovalidateMode.always;
@@ -216,13 +222,6 @@ class _RegisterScreenState extends State<RegisterScreen> implements RegisterNavi
     );
     }
 
-  void register(BuildContext context) {
-    viewModel.register(
-      name: nameController.text,
-      email: emailController.text,
-      password: passwordController.text,
-    );
-  }
 
   @override
   void onError(String errorMessage) {

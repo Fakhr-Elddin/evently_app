@@ -112,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> implements LoginValidator{
                     PrimaryTextButton(
                       text: 'Login',
                       onPressed: (){
-                        viewModel.login();
+                        viewModel.login(userProvider: authProvider);
                       },
                     ),
                     SizedBox(

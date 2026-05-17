@@ -12,7 +12,7 @@ class LoginScreenViewModel extends ChangeNotifier{
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   late LoginValidator validator;
 
-  void login()async{
+  void login({required UserProvider userProvider})async{
     if(formKey.currentState?.validate() ?? false){
       try {
         validator.onLoading();
@@ -20,8 +20,8 @@ class LoginScreenViewModel extends ChangeNotifier{
             email: emailController.text,
             password: passwordController.text
         );
-        UserProvider provider = UserProvider();
-        await provider.initUser();
+
+        await userProvider.initUser();
         validator.onSuccess();
       } on FirebaseAuthException catch (e) {
         validator.onError("Email Or Password Is Not Valid");
