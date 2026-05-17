@@ -1,6 +1,6 @@
 import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/models/user_model.dart';
-import 'package:evently_app/screens/home/register/register_navigator.dart';
+import 'package:evently_app/screens/register/register_navigator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 

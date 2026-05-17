@@ -1,8 +1,8 @@
 import 'package:evently_app/firebase/firebase_manager.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
 import 'package:evently_app/screens/home/home_screen.dart';
-import 'package:evently_app/screens/home/register/register_navigator.dart';
-import 'package:evently_app/screens/home/register/register_screen_view_model.dart';
+import 'package:evently_app/screens/register/register_navigator.dart';
+import 'package:evently_app/screens/register/register_screen_view_model.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/utils/assets_manager.dart';
