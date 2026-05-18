@@ -14,7 +14,7 @@ class UserProvider extends ChangeNotifier{
   }
 
   Future<void> initUser() async{
-    //currentUser = FirebaseAuth.instance.currentUser;
+    currentUser = FirebaseAuth.instance.currentUser;
     userModel = await FirebaseManager.readUserData(currentUser!.uid);
     notifyListeners();
   }

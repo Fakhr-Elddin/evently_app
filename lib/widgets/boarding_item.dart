@@ -1,6 +1,6 @@
 import 'package:evently_app/models/onboarding_model.dart';
 import 'package:evently_app/providers/app_theme_provider.dart';
-import 'package:evently_app/screens/login_screen.dart';
+import 'package:evently_app/screens/login/login_screen.dart';
 import 'package:evently_app/utils/app_colors.dart';
 import 'package:evently_app/utils/app_styles.dart';
 import 'package:evently_app/widgets/custom_icon_button.dart';
